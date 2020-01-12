@@ -44,3 +44,32 @@ with open('bit.dat', 'rb') as fd:
 ```
 
 The compressed binary data can also be stored with `models.BinaryField` in Django.
+
+```
+from django.db import models
+from bitfilter import BitFilter
+
+
+class File(models.Model):
+
+     markers = models.BinaryField(default=None, max_length=1024, null=True)
+     likers = models.BinaryField(default=None, max_length=1024, null=True)
+     
+     def set_record(self, name, uid):
+        bit = BitFilter(data=getattr(self, name))
+        bit.set(uid)
+        setattr(self, name, bit.tobytes())
+        self.save(update_fields=[name])
+
+    def del_record(self, name, uid):
+        bit = BitFilter(data=getattr(self, name))
+        bit.delete(uid)
+        setattr(self, name, bit.tobytes())
+        self.save(update_fields=[name])
+
+    def has_record(self, name, uid):
+        return BitFilter(data=getattr(self, name)).get(uid)
+        
+```
+
+Hope you'll like it.
