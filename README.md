@@ -2,7 +2,7 @@
 
 An implementation analogous to bloom filter, for efficiently storing, retrieving and deleting/erasing positive integer numbers, also scalable to data size.
 
-Typically, it can be used for keep records of user ids that are associated to an item (e.g. a file marked by some users).
+Typically, it can be used for keeping records of user ids that are associated to an item (e.g. a file marked by some users).
 
 ### Requirenment
 
