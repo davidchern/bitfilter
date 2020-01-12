@@ -4,7 +4,7 @@ An implementation analogous to bloom filter, for efficiently storing, retrieving
 
 Typically, it can be used for keeping records of user ids that are associated to an item (e.g. a file marked by some users).
 
-### Requirenment
+### Requirement
 
 No any third-party libraries, except for python buildin libraries.
 
@@ -52,8 +52,8 @@ from bitfilter import BitFilter
 
 class File(models.Model):
 
-    markers = models.BinaryField(default=None, max_length=1024, null=True)
-    likers = models.BinaryField(default=None, max_length=1024, null=True)
+    markers = models.BinaryField(default=None, max_length=1024)
+    likers = models.BinaryField(default=None, max_length=1024)
      
     def set_record(self, name, uid):
         bit = BitFilter(data=getattr(self, name))
