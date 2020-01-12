@@ -45,7 +45,7 @@ with open('bit.dat', 'rb') as fd:
 
 The compressed binary data can also be stored with `models.BinaryField` in Django.
 
-```
+```python
 from django.db import models
 from bitfilter import BitFilter
 
