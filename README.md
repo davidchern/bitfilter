@@ -52,10 +52,10 @@ from bitfilter import BitFilter
 
 class File(models.Model):
 
-     markers = models.BinaryField(default=None, max_length=1024, null=True)
-     likers = models.BinaryField(default=None, max_length=1024, null=True)
+    markers = models.BinaryField(default=None, max_length=1024, null=True)
+    likers = models.BinaryField(default=None, max_length=1024, null=True)
      
-     def set_record(self, name, uid):
+    def set_record(self, name, uid):
         bit = BitFilter(data=getattr(self, name))
         bit.set(uid)
         setattr(self, name, bit.tobytes())
